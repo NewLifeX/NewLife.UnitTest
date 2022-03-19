@@ -11,7 +11,7 @@ namespace NewLife.UnitTest
     /// 提供测试用例排序支持：
     /// [TestCaseOrderer("NewLife.UnitTest.TestOrderer", "NewLife.UnitTest")]
     /// </remarks>
-    public class PriorityOrderer : ITestCaseOrderer
+    public class TestOrderer : ITestCaseOrderer
     {
         /// <summary>对测试用例进行排序</summary>
         /// <typeparam name="T"></typeparam>
