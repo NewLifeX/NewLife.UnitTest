@@ -21,13 +21,13 @@ jobs:
         dotnet restore
     - name: Build
       run: |
-        dotnet build --no-restore --version-suffix $(date "+%Y.%m%d") -c Release
+        dotnet build --no-restore -c Release
     - name: Test
       run: |
         dotnet test --no-build
     - name: Pack
       run: |
-        dotnet pack --no-build --version-suffix $(date "+%Y.%m%d") -c Release -o out NewLife.UnitTest/NewLife.UnitTest.csproj
+        dotnet pack --no-restore --version-suffix $(date "+%Y.%m%d") -c Release -o out NewLife.UnitTest/NewLife.UnitTest.csproj
     - name: Publish
       run: |
         dotnet nuget push ./out/*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.nugetKey }}
