@@ -9,9 +9,9 @@ namespace NewLife.UnitTest
     /// <summary>优先级顺序</summary>
     /// <remarks>
     /// 提供测试用例排序支持：
-    /// [TestCaseOrderer("NewLife.UnitTest.TestOrderer", "NewLife.UnitTest")]
+    /// [TestCaseOrderer("NewLife.UnitTest.PriorityOrderer", "NewLife.UnitTest")]
     /// </remarks>
-    public class TestOrderer : ITestCaseOrderer
+    public class PriorityOrderer : ITestCaseOrderer
     {
         /// <summary>对测试用例进行排序</summary>
         /// <typeparam name="T"></typeparam>
@@ -27,7 +27,7 @@ namespace NewLife.UnitTest
                 var atts = testCase.TestMethod.Method.GetCustomAttributes(assemblyName).ToList();
                 foreach (var att in atts)
                 {
-                    var n = att.GetNamedArgument<Int32>(nameof(TestOrderAttribute.Order));
+                    var n = att.GetNamedArgument<Int32>(nameof(TestOrderAttribute.Priority));
                     if (n != 0) priority = n;
                 }
 
