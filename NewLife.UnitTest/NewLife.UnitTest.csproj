@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyTitle>单元测试扩展</AssemblyTitle>
     <Description>单元测试扩展库</Description>
     <Company>新生命开发团队</Company>
@@ -32,11 +32,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="xunit.extensibility.core" Version="2.4.1" />
+    <Content Include="..\Doc\leaf.png" Link="leaf.png" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="..\Doc\leaf.png" Link="leaf.png" PackagePath="\" />
+    <PackageReference Include="NewLife.Core" Version="9.0.2022.401" />
+    <PackageReference Include="xunit.extensibility.core" Version="2.4.1" />
   </ItemGroup>
 
 </Project>
