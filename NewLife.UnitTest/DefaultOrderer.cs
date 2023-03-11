@@ -48,7 +48,7 @@ public class DefaultOrderer : ITestCaseOrderer
             }
         }
 
-        XTrace.WriteLine("使用[DefaultOrderer/默认顺序]测试: {0}, 用例：{1}", types.Join(), ts.Count);
+        XTrace.WriteLine("使用[DefaultOrderer/默认方法顺序]测试: {0}, 用例：{1}", types.Join(), ts.Count);
 
         var dic = new SortedDictionary<Int32, List<T>>();
 
