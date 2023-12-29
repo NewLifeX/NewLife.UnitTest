@@ -22,7 +22,7 @@ public class PriorityOrderer : ITestCaseOrderer
     {
         // 所有测试用例
         var ts = testCases.ToList();
-        var dic2 = new SortedDictionary<Int32, List<T>>();
+        //var dic2 = new SortedDictionary<Int32, List<T>>();
 
         // 借助反射，拿到方法列表，此时为方法在源码中出现顺序。
         // 需要注意，方法对象不唯一，需要拼接名称字符串
@@ -38,8 +38,9 @@ public class PriorityOrderer : ITestCaseOrderer
 
         XTrace.WriteLine("使用[PriorityOrderer/优先级顺序]测试: {0}, 用例：{1}", types.Join(), ts.Count);
 
-        var assemblyName = typeof(TestOrderAttribute).AssemblyQualifiedName!;
+        // 按优先级分组排序
         var dic = new SortedDictionary<Int32, List<T>>();
+        var assemblyName = typeof(TestOrderAttribute).AssemblyQualifiedName!;
         foreach (var testCase in testCases)
         {
             var priority = 0;
@@ -50,11 +51,12 @@ public class PriorityOrderer : ITestCaseOrderer
                 if (n != 0) priority = n;
             }
 
-            if (!dic.TryGetValue(priority, out var list)) list = dic[priority] = new List<T>();
+            if (!dic.TryGetValue(priority, out var list)) list = dic[priority] = [];
 
             list.Add(testCase);
         }
 
+        // 排序字典按优先级带有顺序，每个优先级内部按类名、方法名排序
         //foreach (var testCase in dic.SelectMany(e => e.Value.OrderBy(x => x.TestMethod.Method.Name)))
         //{
         //    yield return testCase;

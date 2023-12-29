@@ -28,7 +28,6 @@ public class DefaultOrderer : ITestCaseOrderer
     {
         // 所有测试用例
         var ts = testCases.ToList();
-        //var dic2 = new SortedDictionary<Int32, List<T>>();
 
         // 借助反射，拿到方法列表，此时为方法在源码中出现顺序。
         // 需要注意，方法对象不唯一，需要拼接名称字符串
@@ -56,7 +55,7 @@ public class DefaultOrderer : ITestCaseOrderer
         foreach (var testCase in ts)
         {
             var priority = testCase.SourceInformation?.LineNumber ?? 0;
-            if (!dic.TryGetValue(priority, out var list)) list = dic[priority] = new List<T>();
+            if (!dic.TryGetValue(priority, out var list)) list = dic[priority] = [];
 
             list.Add(testCase);
         }
@@ -96,6 +95,7 @@ public class DefaultOrderer : ITestCaseOrderer
             yield break;
         }
 
+        // 排序字典按优先级带有顺序，每个优先级内部按类名、方法名排序
         foreach (var item in dic)
         {
             foreach (var testCase in item.Value.OrderBy(x => x.TestMethod.Method.Name))
