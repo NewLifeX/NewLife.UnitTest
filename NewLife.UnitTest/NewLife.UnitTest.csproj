@@ -38,8 +38,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NewLife.Core" Version="10.6.2024.101" />
-    <PackageReference Include="xunit.extensibility.core" Version="2.6.4" />
+    <PackageReference Include="NewLife.Core" Version="10.10.2024.803" />
+    <PackageReference Include="xunit.extensibility.core" Version="2.9.0" />
   </ItemGroup>
 
 </Project>
